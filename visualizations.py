@@ -12,8 +12,8 @@ from mpl_toolkits.axes_grid1 import ImageGrid
 import pandas as pd
 import cv2
 
-import os
-import glob
+import os, glob
+import copy
 from datetime import datetime
 
 
@@ -39,10 +39,10 @@ def loss_vis(compliance_loss_array, title, save=True, path=None):
     if save:
         plt.rcParams.update({'font.size': 18})
         plt.figure(figsize=(14, 10))
-        plt.plot(np.arange(0, len(compliance_loss_array)), compliance_loss_array, label='compliance loss')
-        plt.title('Compliance')
+        plt.plot(np.arange(0, len(compliance_loss_array)), compliance_loss_array)
+        plt.title('Training Loss')
         plt.xlabel('Iteration')
-        plt.ylabel('Compliance Loss')
+        plt.ylabel('MSE loss')
         plt.ylim(0, 100)
         plt.suptitle(title, fontsize=18)
         plt.savefig(path + title_ + '.png')
@@ -119,6 +119,54 @@ def pred_gt_density_vis(pred, gt, gridDimensions, pred_loss, gt_loss, title, sav
         fig.suptitle(title, fontsize=18)
         if os.path.isfile(path + title + '.png'):
             title += str(int(datetime.timestamp(datetime.now())))
+        plt.savefig(path + title + '.png')
+
+
+def pred_vs_gt_integrad(pred, gt, x, grid_dimensions, loss, title, save=True, path=None):
+    gridDimensions = copy.deepcopy(grid_dimensions)
+    gridDimensions.remove(1)
+    n_dim = len(gridDimensions)  # to see if problem is 1D/2D
+
+    if n_dim == 1:
+        plt.figure(figsize=(14, 8))
+
+        pred = pred.flatten().detach().cpu().numpy()
+        gt = gt.flatten().detach().cpu().numpy()
+        x = x.flatten().detach().cpu().numpy()
+        
+        plt.plot(x, gt, linestyle='--', linewidth=5, label='Ground Truth')
+        plt.plot(x, pred, label='Prediction')
+        plt.xlabel('x (coords)')
+        if ('Grad' in title) or ('grad' in title):
+            plt.ylabel('y (Grad)')
+        else:
+            plt.ylabel('y (Integral)')
+        plt.legend()
+        plt.title(title+' (loss={:.3f})'.format(loss))
+
+    elif n_dim == 2:
+        # TODO
+        raise NotImplementedError('2D Integral/grad visualization have not been implemented yet.')
+        density = pred
+        gt_densities = gt
+        fig, axes = plt.subplots(1, 2, figsize=(14, 5))
+        pred_density = -density.view(gridDimensions).detach().cpu().numpy()[:, :].T
+        axes[0].imshow(pred_density, cmap='gray')
+        axes[0].set_title('Prediction (loss={:.3f}, vol={:.3f})'.format(pred_loss, -pred_density.mean()))
+        axes[1].imshow(-gt_densities.reshape(gridDimensions[0], gridDimensions[1]).T, cmap='gray')
+        axes[1].set_title('Ground Truth (loss={:.3f})'.format(gt_loss)) 
+        fig.suptitle('VoxelFEM vs CNN VoxelFEM ('+title+')', fontsize=13)
+
+    if path is None:
+        raise ValueError('Enter a valid path.')
+
+    if save:
+        if os.path.isfile(path + title + '.png'):
+                title += str(int(datetime.timestamp(datetime.now())))
+        if n_dim == 2:
+            # TODO
+            raise NotImplementedError('2D Integral/grad visualization have not been implemented yet.')
+            fig.suptitle(title, fontsize=18)
         plt.savefig(path + title + '.png')
 
 

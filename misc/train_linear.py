@@ -1,4 +1,5 @@
 import os, sys
+from numpy.lib.npyio import save
 import torch
 import torch.nn as nn
 from torch.utils.data import DataLoader
@@ -21,11 +22,11 @@ import itertools
 
 
 # global variables that control visualizing/saving problem domain, losses, etc.
-visualize = False
+visualize = True
 save_model = False
 save_integral_pred = False
 
-problem_path = '1DIntegral'  # TODO
+problem_path = 'Linear1D'  # TODO
 grid_dimensions = [100, 1]  # TODO
 
 # hyper parameter of positional encoding in NeRF
@@ -98,10 +99,13 @@ sys.stderr.write('Integral network allclose: {}\n'.format(torch.allclose(input=i
 sys.stderr.write('Grad network allclose: {}\n'.format(torch.allclose(input=utils.gradient(integral_pred, x), other=f(x))))  # check grad network
 
 # visualization and saving model
-title = 'mlp_'+problem_path+'_'+str(step)
-title = visualizations.loss_vis(loss_array, title, True, path='tmp/l.png')
-# visualizations.integral_pred_vis(integral_pred, loss_array[-1], grid_dimensions, title, True, visualize, True,
-#                             binary_loss=None, path='tmp/d.png')
+grid_title = ''.join(str(i)+'x' for i in grid_dimensions)[:-1]
+title = 'mlp_'+problem_path+'_'+str(step+1)+'_'+grid_title
+title = visualizations.loss_vis(loss_array, title, True, path='tmp/')
+visualizations.pred_vs_gt_integrad(pred=integral_pred, gt=g(x), x=x, grid_dimensions=grid_dimensions,
+                                    loss=loss_array[-1], title='Integral_'+title, save=visualize, path='tmp/')
+visualizations.pred_vs_gt_integrad(pred=utils.gradient(model(x), x), gt=f(x), x=x, grid_dimensions=grid_dimensions,
+                                    loss=loss_array[-1], title='Grad_'+title, save=visualize, path='tmp/')
 
 # recording run time
 execution_time = time.perf_counter() - start_time
