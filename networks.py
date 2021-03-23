@@ -159,7 +159,10 @@ class MLP(nn.Module):
 
         for i in range(n_layers):
             if i == 0:
-                self.net.append(nn.Linear(embedding_size * 2, n_neurons))
+                if scale == 0:
+                    self.net.append(nn.Linear(self.in_features, n_neurons))
+                else:
+                    self.net.append(nn.Linear(embedding_size * 2, n_neurons))
                 self.net.append(hidden_act)
                 if dropout_rate > 0:
                     self.net.append(nn.Dropout(p=dropout_rate))
@@ -179,10 +182,13 @@ class MLP(nn.Module):
         self.net.apply(self.linear_orthogonal_initializer)
 
     def forward(self, coords):
-        x_proj = (2. * math.pi * coords) @ self.B.T
-        x_proj = torch.cat([torch.sin(x_proj), torch.cos(x_proj)], dim=-1)
-        output = self.net(x_proj)
-        return output
+        if self.scale == 0:
+            return self.net(coords)
+        else:
+            x_proj = (2. * math.pi * coords) @ self.B.T
+            x_proj = torch.cat([torch.sin(x_proj), torch.cos(x_proj)], dim=-1)
+            output = self.net(x_proj)
+            return output
 
     def input_encoder(self, x, a, b):
         return torch.cat([a * torch.sin((2. * math.pi * x) @ b.T), a * torch.cos((2. * math.pi * x) @ b.T)], dim=-1)
@@ -250,7 +256,10 @@ class MLP(nn.Module):
         :param m: Module m (rec: use module.apply(this method))
         """
         classname = m.__class__.__name__
-        gain = 1.0 * np.sqrt(max(self.n_neurons / self.embedding_size, 1))
+        if self.scale == 0:
+            gain = 1.0
+        else:
+            gain = 1.0 * np.sqrt(max(self.n_neurons / self.embedding_size, 1))
         if classname.find('Linear') != -1:
             torch.nn.init.orthogonal_(m.weight, gain=gain)  # gain is the same in tf and pt
             torch.nn.init.constant_(m.bias, 0.0)
