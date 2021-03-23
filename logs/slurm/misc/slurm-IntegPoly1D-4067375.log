@@ -1,0 +1,1027 @@
+Experiment ID: 4067375
+image path: logs/images/misc/4067375/, loss path: logs/loss/misc/4067375/
+grid Dimension: [100, 1]
+Deep learning model config: MLP(
+  (net): Sequential(
+    (0): Linear(in_features=1, out_features=256, bias=True)
+    (1): SiLU()
+    (2): Linear(in_features=256, out_features=256, bias=True)
+    (3): SiLU()
+    (4): Linear(in_features=256, out_features=256, bias=True)
+    (5): SiLU()
+    (6): Linear(in_features=256, out_features=1, bias=True)
+  )
+)
+DL optim: Adam (
+Parameter Group 0
+    amsgrad: False
+    betas: (0.9, 0.999)
+    eps: 1e-08
+    lr: 0.003
+    weight_decay: 0
+)
+Target grad function: 2x+6, target integral function: x^2+6x
+Training:   0%|          | 0/1000 [00:00<?, ?it/s]Total Steps: 0, MSE loss 172.212479
+Training:   0%|          | 1/1000 [00:02<35:32,  2.13s/it]Total Steps: 1, MSE loss 169.875595
+Total Steps: 2, MSE loss 166.981384
+Total Steps: 3, MSE loss 162.548187
+Total Steps: 4, MSE loss 155.885742
+Total Steps: 5, MSE loss 146.433807
+Total Steps: 6, MSE loss 133.831360
+Total Steps: 7, MSE loss 118.070213
+Total Steps: 8, MSE loss 99.368591
+Total Steps: 9, MSE loss 78.189346
+Total Steps: 10, MSE loss 55.968754
+Total Steps: 11, MSE loss 36.236057
+Total Steps: 12, MSE loss 24.978954
+Total Steps: 13, MSE loss 27.552561
+Total Steps: 14, MSE loss 35.454117
+Total Steps: 15, MSE loss 33.528152
+Total Steps: 16, MSE loss 23.416681
+Total Steps: 17, MSE loss 15.288916
+Total Steps: 18, MSE loss 15.480273
+Total Steps: 19, MSE loss 19.588919
+Total Steps: 20, MSE loss 18.948496
+Total Steps: 21, MSE loss 13.751340
+Total Steps: 22, MSE loss 8.922891
+Total Steps: 23, MSE loss 8.128976
+Total Steps: 24, MSE loss 10.364964
+Training:   2%|▎         | 25/1000 [00:02<01:02, 15.48it/s]Total Steps: 25, MSE loss 11.239280
+Total Steps: 26, MSE loss 8.810239
+Total Steps: 27, MSE loss 5.400596
+Total Steps: 28, MSE loss 3.861185
+Total Steps: 29, MSE loss 4.463162
+Total Steps: 30, MSE loss 5.310493
+Total Steps: 31, MSE loss 4.824167
+Total Steps: 32, MSE loss 3.224364
+Total Steps: 33, MSE loss 1.932621
+Total Steps: 34, MSE loss 1.992775
+Total Steps: 35, MSE loss 2.930824
+Total Steps: 36, MSE loss 3.309631
+Total Steps: 37, MSE loss 2.595448
+Total Steps: 38, MSE loss 1.662685
+Total Steps: 39, MSE loss 1.437771
+Total Steps: 40, MSE loss 1.855113
+Total Steps: 41, MSE loss 2.186315
+Total Steps: 42, MSE loss 1.959043
+Total Steps: 43, MSE loss 1.373368
+Total Steps: 44, MSE loss 0.975401
+Total Steps: 45, MSE loss 1.040474
+Total Steps: 46, MSE loss 1.291392
+Total Steps: 47, MSE loss 1.286381
+Total Steps: 48, MSE loss 0.984269
+Total Steps: 49, MSE loss 0.712195
+Training:   5%|▌         | 50/1000 [00:02<00:27, 34.74it/s]Total Steps: 50, MSE loss 0.689755
+Total Steps: 51, MSE loss 0.804957
+Total Steps: 52, MSE loss 0.824827
+Total Steps: 53, MSE loss 0.677902
+Total Steps: 54, MSE loss 0.495296
+Total Steps: 55, MSE loss 0.430443
+Total Steps: 56, MSE loss 0.482393
+Total Steps: 57, MSE loss 0.519216
+Total Steps: 58, MSE loss 0.458977
+Total Steps: 59, MSE loss 0.359599
+Total Steps: 60, MSE loss 0.316213
+Total Steps: 61, MSE loss 0.338528
+Total Steps: 62, MSE loss 0.360851
+Total Steps: 63, MSE loss 0.333985
+Total Steps: 64, MSE loss 0.276159
+Total Steps: 65, MSE loss 0.239961
+Total Steps: 66, MSE loss 0.245137
+Total Steps: 67, MSE loss 0.258761
+Total Steps: 68, MSE loss 0.243275
+Total Steps: 69, MSE loss 0.204535
+Total Steps: 70, MSE loss 0.178627
+Total Steps: 71, MSE loss 0.181815
+Total Steps: 72, MSE loss 0.191157
+Total Steps: 73, MSE loss 0.177980
+Total Steps: 74, MSE loss 0.148375
+Training:   8%|▊         | 75/1000 [00:02<00:16, 57.33it/s]Total Steps: 75, MSE loss 0.133233
+Total Steps: 76, MSE loss 0.140712
+Total Steps: 77, MSE loss 0.144337
+Total Steps: 78, MSE loss 0.126977
+Total Steps: 79, MSE loss 0.107642
+Total Steps: 80, MSE loss 0.106888
+Total Steps: 81, MSE loss 0.113275
+Total Steps: 82, MSE loss 0.106830
+Total Steps: 83, MSE loss 0.092707
+Total Steps: 84, MSE loss 0.087355
+Total Steps: 85, MSE loss 0.089728
+Total Steps: 86, MSE loss 0.088176
+Total Steps: 87, MSE loss 0.081460
+Total Steps: 88, MSE loss 0.076047
+Total Steps: 89, MSE loss 0.074093
+Total Steps: 90, MSE loss 0.073634
+Total Steps: 91, MSE loss 0.072004
+Total Steps: 92, MSE loss 0.067571
+Total Steps: 93, MSE loss 0.063273
+Total Steps: 94, MSE loss 0.062893
+Total Steps: 95, MSE loss 0.063131
+Total Steps: 96, MSE loss 0.059434
+Total Steps: 97, MSE loss 0.055274
+Total Steps: 98, MSE loss 0.054763
+Total Steps: 99, MSE loss 0.054631
+Training:  10%|█         | 100/1000 [00:02<00:10, 82.43it/s]Total Steps: 100, MSE loss 0.051869
+Total Steps: 101, MSE loss 0.049053
+Total Steps: 102, MSE loss 0.047960
+Total Steps: 103, MSE loss 0.047106
+Total Steps: 104, MSE loss 0.045596
+Total Steps: 105, MSE loss 0.043701
+Total Steps: 106, MSE loss 0.041986
+Total Steps: 107, MSE loss 0.041132
+Total Steps: 108, MSE loss 0.040395
+Total Steps: 109, MSE loss 0.038674
+Total Steps: 110, MSE loss 0.037054
+Total Steps: 111, MSE loss 0.036504
+Total Steps: 112, MSE loss 0.035787
+Total Steps: 113, MSE loss 0.034375
+Total Steps: 114, MSE loss 0.033304
+Total Steps: 115, MSE loss 0.032706
+Total Steps: 116, MSE loss 0.031992
+Total Steps: 117, MSE loss 0.031128
+Total Steps: 118, MSE loss 0.030272
+Total Steps: 119, MSE loss 0.029606
+Total Steps: 120, MSE loss 0.029146
+Total Steps: 121, MSE loss 0.028487
+Total Steps: 122, MSE loss 0.027682
+Total Steps: 123, MSE loss 0.027184
+Total Steps: 124, MSE loss 0.026772
+Training:  12%|█▎        | 125/1000 [00:02<00:08, 108.69it/s]Total Steps: 125, MSE loss 0.026124
+Total Steps: 126, MSE loss 0.025509
+Total Steps: 127, MSE loss 0.025052
+Total Steps: 128, MSE loss 0.024581
+Total Steps: 129, MSE loss 0.024064
+Total Steps: 130, MSE loss 0.023537
+Total Steps: 131, MSE loss 0.023071
+Total Steps: 132, MSE loss 0.022681
+Total Steps: 133, MSE loss 0.022227
+Total Steps: 134, MSE loss 0.021743
+Total Steps: 135, MSE loss 0.021369
+Total Steps: 136, MSE loss 0.021002
+Total Steps: 137, MSE loss 0.020576
+Total Steps: 138, MSE loss 0.020183
+Total Steps: 139, MSE loss 0.019826
+Total Steps: 140, MSE loss 0.019467
+Total Steps: 141, MSE loss 0.019098
+Total Steps: 142, MSE loss 0.018726
+Total Steps: 143, MSE loss 0.018391
+Total Steps: 144, MSE loss 0.018066
+Total Steps: 145, MSE loss 0.017712
+Total Steps: 146, MSE loss 0.017381
+Total Steps: 147, MSE loss 0.017077
+Total Steps: 148, MSE loss 0.016762
+Total Steps: 149, MSE loss 0.016449
+Training:  15%|█▌        | 150/1000 [00:02<00:06, 134.52it/s]Total Steps: 150, MSE loss 0.016151
+Total Steps: 151, MSE loss 0.015864
+Total Steps: 152, MSE loss 0.015580
+Total Steps: 153, MSE loss 0.015293
+Total Steps: 154, MSE loss 0.015021
+Total Steps: 155, MSE loss 0.014761
+Total Steps: 156, MSE loss 0.014495
+Total Steps: 157, MSE loss 0.014236
+Total Steps: 158, MSE loss 0.013991
+Total Steps: 159, MSE loss 0.013748
+Total Steps: 160, MSE loss 0.013508
+Total Steps: 161, MSE loss 0.013275
+Total Steps: 162, MSE loss 0.013051
+Total Steps: 163, MSE loss 0.012831
+Total Steps: 164, MSE loss 0.012613
+Total Steps: 165, MSE loss 0.012403
+Total Steps: 166, MSE loss 0.012199
+Total Steps: 167, MSE loss 0.011996
+Total Steps: 168, MSE loss 0.011798
+Total Steps: 169, MSE loss 0.011605
+Total Steps: 170, MSE loss 0.011414
+Total Steps: 171, MSE loss 0.011226
+Total Steps: 172, MSE loss 0.011040
+Total Steps: 173, MSE loss 0.010859
+Total Steps: 174, MSE loss 0.010679
+Training:  18%|█▊        | 175/1000 [00:02<00:05, 158.35it/s]Total Steps: 175, MSE loss 0.010501
+Total Steps: 176, MSE loss 0.010328
+Total Steps: 177, MSE loss 0.010156
+Total Steps: 178, MSE loss 0.009988
+Total Steps: 179, MSE loss 0.009822
+Total Steps: 180, MSE loss 0.009660
+Total Steps: 181, MSE loss 0.009500
+Total Steps: 182, MSE loss 0.009343
+Total Steps: 183, MSE loss 0.009189
+Total Steps: 184, MSE loss 0.009038
+Total Steps: 185, MSE loss 0.008888
+Total Steps: 186, MSE loss 0.008742
+Total Steps: 187, MSE loss 0.008598
+Total Steps: 188, MSE loss 0.008457
+Total Steps: 189, MSE loss 0.008318
+Total Steps: 190, MSE loss 0.008181
+Total Steps: 191, MSE loss 0.008047
+Total Steps: 192, MSE loss 0.007914
+Total Steps: 193, MSE loss 0.007784
+Total Steps: 194, MSE loss 0.007656
+Total Steps: 195, MSE loss 0.007530
+Total Steps: 196, MSE loss 0.007406
+Total Steps: 197, MSE loss 0.007283
+Total Steps: 198, MSE loss 0.007163
+Total Steps: 199, MSE loss 0.007045
+Training:  20%|██        | 200/1000 [00:02<00:04, 179.17it/s]Total Steps: 200, MSE loss 0.006928
+Total Steps: 201, MSE loss 0.006814
+Total Steps: 202, MSE loss 0.006701
+Total Steps: 203, MSE loss 0.006590
+Total Steps: 204, MSE loss 0.006481
+Total Steps: 205, MSE loss 0.006373
+Total Steps: 206, MSE loss 0.006268
+Total Steps: 207, MSE loss 0.006163
+Total Steps: 208, MSE loss 0.006061
+Total Steps: 209, MSE loss 0.005960
+Total Steps: 210, MSE loss 0.005861
+Total Steps: 211, MSE loss 0.005764
+Total Steps: 212, MSE loss 0.005668
+Total Steps: 213, MSE loss 0.005573
+Total Steps: 214, MSE loss 0.005480
+Total Steps: 215, MSE loss 0.005389
+Total Steps: 216, MSE loss 0.005299
+Total Steps: 217, MSE loss 0.005211
+Total Steps: 218, MSE loss 0.005123
+Total Steps: 219, MSE loss 0.005038
+Total Steps: 220, MSE loss 0.004953
+Total Steps: 221, MSE loss 0.004871
+Total Steps: 222, MSE loss 0.004789
+Total Steps: 223, MSE loss 0.004709
+Total Steps: 224, MSE loss 0.004630
+Training:  22%|██▎       | 225/1000 [00:03<00:03, 196.38it/s]Total Steps: 225, MSE loss 0.004552
+Total Steps: 226, MSE loss 0.004476
+Total Steps: 227, MSE loss 0.004400
+Total Steps: 228, MSE loss 0.004327
+Total Steps: 229, MSE loss 0.004254
+Total Steps: 230, MSE loss 0.004182
+Total Steps: 231, MSE loss 0.004112
+Total Steps: 232, MSE loss 0.004043
+Total Steps: 233, MSE loss 0.003975
+Total Steps: 234, MSE loss 0.003908
+Total Steps: 235, MSE loss 0.003843
+Total Steps: 236, MSE loss 0.003778
+Total Steps: 237, MSE loss 0.003714
+Total Steps: 238, MSE loss 0.003652
+Total Steps: 239, MSE loss 0.003590
+Total Steps: 240, MSE loss 0.003530
+Total Steps: 241, MSE loss 0.003471
+Total Steps: 242, MSE loss 0.003412
+Total Steps: 243, MSE loss 0.003355
+Total Steps: 244, MSE loss 0.003299
+Total Steps: 245, MSE loss 0.003243
+Total Steps: 246, MSE loss 0.003189
+Total Steps: 247, MSE loss 0.003135
+Total Steps: 248, MSE loss 0.003082
+Total Steps: 249, MSE loss 0.003031
+Training:  25%|██▌       | 250/1000 [00:03<00:03, 210.28it/s]Total Steps: 250, MSE loss 0.002980
+Total Steps: 251, MSE loss 0.002930
+Total Steps: 252, MSE loss 0.002881
+Total Steps: 253, MSE loss 0.002832
+Total Steps: 254, MSE loss 0.002785
+Total Steps: 255, MSE loss 0.002738
+Total Steps: 256, MSE loss 0.002692
+Total Steps: 257, MSE loss 0.002647
+Total Steps: 258, MSE loss 0.002603
+Total Steps: 259, MSE loss 0.002559
+Total Steps: 260, MSE loss 0.002516
+Total Steps: 261, MSE loss 0.002474
+Total Steps: 262, MSE loss 0.002433
+Total Steps: 263, MSE loss 0.002392
+Total Steps: 264, MSE loss 0.002352
+Total Steps: 265, MSE loss 0.002313
+Total Steps: 266, MSE loss 0.002275
+Total Steps: 267, MSE loss 0.002237
+Total Steps: 268, MSE loss 0.002199
+Total Steps: 269, MSE loss 0.002163
+Total Steps: 270, MSE loss 0.002127
+Total Steps: 271, MSE loss 0.002092
+Total Steps: 272, MSE loss 0.002057
+Total Steps: 273, MSE loss 0.002023
+Total Steps: 274, MSE loss 0.001989
+Training:  28%|██▊       | 275/1000 [00:03<00:03, 220.91it/s]Total Steps: 275, MSE loss 0.001957
+Total Steps: 276, MSE loss 0.001924
+Total Steps: 277, MSE loss 0.001893
+Total Steps: 278, MSE loss 0.001861
+Total Steps: 279, MSE loss 0.001831
+Total Steps: 280, MSE loss 0.001801
+Total Steps: 281, MSE loss 0.001771
+Total Steps: 282, MSE loss 0.001742
+Total Steps: 283, MSE loss 0.001714
+Total Steps: 284, MSE loss 0.001686
+Total Steps: 285, MSE loss 0.001658
+Total Steps: 286, MSE loss 0.001631
+Total Steps: 287, MSE loss 0.001605
+Total Steps: 288, MSE loss 0.001579
+Total Steps: 289, MSE loss 0.001553
+Total Steps: 290, MSE loss 0.001528
+Total Steps: 291, MSE loss 0.001503
+Total Steps: 292, MSE loss 0.001479
+Total Steps: 293, MSE loss 0.001455
+Total Steps: 294, MSE loss 0.001432
+Total Steps: 295, MSE loss 0.001409
+Total Steps: 296, MSE loss 0.001387
+Total Steps: 297, MSE loss 0.001365
+Total Steps: 298, MSE loss 0.001343
+Total Steps: 299, MSE loss 0.001322
+Training:  30%|███       | 300/1000 [00:03<00:03, 228.68it/s]Total Steps: 300, MSE loss 0.001301
+Total Steps: 301, MSE loss 0.001280
+Total Steps: 302, MSE loss 0.001260
+Total Steps: 303, MSE loss 0.001240
+Total Steps: 304, MSE loss 0.001221
+Total Steps: 305, MSE loss 0.001202
+Total Steps: 306, MSE loss 0.001183
+Total Steps: 307, MSE loss 0.001165
+Total Steps: 308, MSE loss 0.001147
+Total Steps: 309, MSE loss 0.001129
+Total Steps: 310, MSE loss 0.001112
+Total Steps: 311, MSE loss 0.001095
+Total Steps: 312, MSE loss 0.001078
+Total Steps: 313, MSE loss 0.001062
+Total Steps: 314, MSE loss 0.001046
+Total Steps: 315, MSE loss 0.001030
+Total Steps: 316, MSE loss 0.001014
+Total Steps: 317, MSE loss 0.000999
+Total Steps: 318, MSE loss 0.000984
+Total Steps: 319, MSE loss 0.000970
+Total Steps: 320, MSE loss 0.000955
+Total Steps: 321, MSE loss 0.000941
+Total Steps: 322, MSE loss 0.000927
+Total Steps: 323, MSE loss 0.000914
+Total Steps: 324, MSE loss 0.000900
+Training:  32%|███▎      | 325/1000 [00:03<00:02, 234.30it/s]Total Steps: 325, MSE loss 0.000887
+Total Steps: 326, MSE loss 0.000874
+Total Steps: 327, MSE loss 0.000862
+Total Steps: 328, MSE loss 0.000849
+Total Steps: 329, MSE loss 0.000837
+Total Steps: 330, MSE loss 0.000825
+Total Steps: 331, MSE loss 0.000813
+Total Steps: 332, MSE loss 0.000802
+Total Steps: 333, MSE loss 0.000791
+Total Steps: 334, MSE loss 0.000780
+Total Steps: 335, MSE loss 0.000769
+Total Steps: 336, MSE loss 0.000758
+Total Steps: 337, MSE loss 0.000748
+Total Steps: 338, MSE loss 0.000737
+Total Steps: 339, MSE loss 0.000727
+Total Steps: 340, MSE loss 0.000717
+Total Steps: 341, MSE loss 0.000708
+Total Steps: 342, MSE loss 0.000698
+Total Steps: 343, MSE loss 0.000689
+Total Steps: 344, MSE loss 0.000680
+Total Steps: 345, MSE loss 0.000671
+Total Steps: 346, MSE loss 0.000662
+Total Steps: 347, MSE loss 0.000653
+Total Steps: 348, MSE loss 0.000645
+Total Steps: 349, MSE loss 0.000636
+Training:  35%|███▌      | 350/1000 [00:03<00:02, 238.59it/s]Total Steps: 350, MSE loss 0.000628
+Total Steps: 351, MSE loss 0.000620
+Total Steps: 352, MSE loss 0.000612
+Total Steps: 353, MSE loss 0.000605
+Total Steps: 354, MSE loss 0.000597
+Total Steps: 355, MSE loss 0.000590
+Total Steps: 356, MSE loss 0.000582
+Total Steps: 357, MSE loss 0.000575
+Total Steps: 358, MSE loss 0.000568
+Total Steps: 359, MSE loss 0.000561
+Total Steps: 360, MSE loss 0.000554
+Total Steps: 361, MSE loss 0.000548
+Total Steps: 362, MSE loss 0.000541
+Total Steps: 363, MSE loss 0.000535
+Total Steps: 364, MSE loss 0.000528
+Total Steps: 365, MSE loss 0.000522
+Total Steps: 366, MSE loss 0.000516
+Total Steps: 367, MSE loss 0.000510
+Total Steps: 368, MSE loss 0.000504
+Total Steps: 369, MSE loss 0.000499
+Total Steps: 370, MSE loss 0.000493
+Total Steps: 371, MSE loss 0.000487
+Total Steps: 372, MSE loss 0.000482
+Total Steps: 373, MSE loss 0.000477
+Total Steps: 374, MSE loss 0.000471
+Training:  38%|███▊      | 375/1000 [00:03<00:02, 241.82it/s]Total Steps: 375, MSE loss 0.000466
+Total Steps: 376, MSE loss 0.000461
+Total Steps: 377, MSE loss 0.000456
+Total Steps: 378, MSE loss 0.000451
+Total Steps: 379, MSE loss 0.000446
+Total Steps: 380, MSE loss 0.000442
+Total Steps: 381, MSE loss 0.000437
+Total Steps: 382, MSE loss 0.000433
+Total Steps: 383, MSE loss 0.000428
+Total Steps: 384, MSE loss 0.000424
+Total Steps: 385, MSE loss 0.000419
+Total Steps: 386, MSE loss 0.000415
+Total Steps: 387, MSE loss 0.000411
+Total Steps: 388, MSE loss 0.000407
+Total Steps: 389, MSE loss 0.000403
+Total Steps: 390, MSE loss 0.000399
+Total Steps: 391, MSE loss 0.000395
+Total Steps: 392, MSE loss 0.000391
+Total Steps: 393, MSE loss 0.000388
+Total Steps: 394, MSE loss 0.000384
+Total Steps: 395, MSE loss 0.000380
+Total Steps: 396, MSE loss 0.000377
+Total Steps: 397, MSE loss 0.000373
+Total Steps: 398, MSE loss 0.000370
+Total Steps: 399, MSE loss 0.000367
+Training:  40%|████      | 400/1000 [00:03<00:02, 243.93it/s]Total Steps: 400, MSE loss 0.000363
+Total Steps: 401, MSE loss 0.000360
+Total Steps: 402, MSE loss 0.000357
+Total Steps: 403, MSE loss 0.000354
+Total Steps: 404, MSE loss 0.000351
+Total Steps: 405, MSE loss 0.000348
+Total Steps: 406, MSE loss 0.000345
+Total Steps: 407, MSE loss 0.000342
+Total Steps: 408, MSE loss 0.000339
+Total Steps: 409, MSE loss 0.000336
+Total Steps: 410, MSE loss 0.000333
+Total Steps: 411, MSE loss 0.000330
+Total Steps: 412, MSE loss 0.000328
+Total Steps: 413, MSE loss 0.000325
+Total Steps: 414, MSE loss 0.000322
+Total Steps: 415, MSE loss 0.000320
+Total Steps: 416, MSE loss 0.000317
+Total Steps: 417, MSE loss 0.000315
+Total Steps: 418, MSE loss 0.000312
+Total Steps: 419, MSE loss 0.000310
+Total Steps: 420, MSE loss 0.000308
+Total Steps: 421, MSE loss 0.000305
+Total Steps: 422, MSE loss 0.000303
+Total Steps: 423, MSE loss 0.000301
+Total Steps: 424, MSE loss 0.000299
+Training:  42%|████▎     | 425/1000 [00:03<00:02, 244.96it/s]Total Steps: 425, MSE loss 0.000296
+Total Steps: 426, MSE loss 0.000294
+Total Steps: 427, MSE loss 0.000292
+Total Steps: 428, MSE loss 0.000290
+Total Steps: 429, MSE loss 0.000288
+Total Steps: 430, MSE loss 0.000286
+Total Steps: 431, MSE loss 0.000284
+Total Steps: 432, MSE loss 0.000282
+Total Steps: 433, MSE loss 0.000280
+Total Steps: 434, MSE loss 0.000278
+Total Steps: 435, MSE loss 0.000276
+Total Steps: 436, MSE loss 0.000274
+Total Steps: 437, MSE loss 0.000273
+Total Steps: 438, MSE loss 0.000271
+Total Steps: 439, MSE loss 0.000269
+Total Steps: 440, MSE loss 0.000267
+Total Steps: 441, MSE loss 0.000265
+Total Steps: 442, MSE loss 0.000264
+Total Steps: 443, MSE loss 0.000262
+Total Steps: 444, MSE loss 0.000260
+Total Steps: 445, MSE loss 0.000259
+Total Steps: 446, MSE loss 0.000257
+Total Steps: 447, MSE loss 0.000256
+Total Steps: 448, MSE loss 0.000254
+Total Steps: 449, MSE loss 0.000253
+Training:  45%|████▌     | 450/1000 [00:03<00:02, 245.68it/s]Total Steps: 450, MSE loss 0.000251
+Total Steps: 451, MSE loss 0.000250
+Total Steps: 452, MSE loss 0.000248
+Total Steps: 453, MSE loss 0.000247
+Total Steps: 454, MSE loss 0.000245
+Total Steps: 455, MSE loss 0.000244
+Total Steps: 456, MSE loss 0.000242
+Total Steps: 457, MSE loss 0.000241
+Total Steps: 458, MSE loss 0.000240
+Total Steps: 459, MSE loss 0.000238
+Total Steps: 460, MSE loss 0.000237
+Total Steps: 461, MSE loss 0.000236
+Total Steps: 462, MSE loss 0.000234
+Total Steps: 463, MSE loss 0.000233
+Total Steps: 464, MSE loss 0.000232
+Total Steps: 465, MSE loss 0.000231
+Total Steps: 466, MSE loss 0.000229
+Total Steps: 467, MSE loss 0.000228
+Total Steps: 468, MSE loss 0.000227
+Total Steps: 469, MSE loss 0.000226
+Total Steps: 470, MSE loss 0.000225
+Total Steps: 471, MSE loss 0.000224
+Total Steps: 472, MSE loss 0.000222
+Total Steps: 473, MSE loss 0.000221
+Total Steps: 474, MSE loss 0.000220
+Training:  48%|████▊     | 475/1000 [00:04<00:02, 246.54it/s]Total Steps: 475, MSE loss 0.000219
+Total Steps: 476, MSE loss 0.000218
+Total Steps: 477, MSE loss 0.000217
+Total Steps: 478, MSE loss 0.000216
+Total Steps: 479, MSE loss 0.000215
+Total Steps: 480, MSE loss 0.000214
+Total Steps: 481, MSE loss 0.000213
+Total Steps: 482, MSE loss 0.000212
+Total Steps: 483, MSE loss 0.000211
+Total Steps: 484, MSE loss 0.000210
+Total Steps: 485, MSE loss 0.000209
+Total Steps: 486, MSE loss 0.000208
+Total Steps: 487, MSE loss 0.000207
+Total Steps: 488, MSE loss 0.000206
+Total Steps: 489, MSE loss 0.000205
+Total Steps: 490, MSE loss 0.000204
+Total Steps: 491, MSE loss 0.000203
+Total Steps: 492, MSE loss 0.000202
+Total Steps: 493, MSE loss 0.000201
+Total Steps: 494, MSE loss 0.000200
+Total Steps: 495, MSE loss 0.000199
+Total Steps: 496, MSE loss 0.000199
+Total Steps: 497, MSE loss 0.000198
+Total Steps: 498, MSE loss 0.000197
+Total Steps: 499, MSE loss 0.000196
+Training:  50%|█████     | 500/1000 [00:04<00:02, 247.18it/s]Total Steps: 500, MSE loss 0.000195
+Total Steps: 501, MSE loss 0.000194
+Total Steps: 502, MSE loss 0.000194
+Total Steps: 503, MSE loss 0.000193
+Total Steps: 504, MSE loss 0.000192
+Total Steps: 505, MSE loss 0.000191
+Total Steps: 506, MSE loss 0.000190
+Total Steps: 507, MSE loss 0.000189
+Total Steps: 508, MSE loss 0.000189
+Total Steps: 509, MSE loss 0.000188
+Total Steps: 510, MSE loss 0.000187
+Total Steps: 511, MSE loss 0.000186
+Total Steps: 512, MSE loss 0.000186
+Total Steps: 513, MSE loss 0.000185
+Total Steps: 514, MSE loss 0.000184
+Total Steps: 515, MSE loss 0.000183
+Total Steps: 516, MSE loss 0.000183
+Total Steps: 517, MSE loss 0.000182
+Total Steps: 518, MSE loss 0.000181
+Total Steps: 519, MSE loss 0.000181
+Total Steps: 520, MSE loss 0.000180
+Total Steps: 521, MSE loss 0.000179
+Total Steps: 522, MSE loss 0.000178
+Total Steps: 523, MSE loss 0.000178
+Total Steps: 524, MSE loss 0.000177
+Training:  52%|█████▎    | 525/1000 [00:04<00:01, 247.78it/s]Total Steps: 525, MSE loss 0.000176
+Total Steps: 526, MSE loss 0.000176
+Total Steps: 527, MSE loss 0.000175
+Total Steps: 528, MSE loss 0.000174
+Total Steps: 529, MSE loss 0.000174
+Total Steps: 530, MSE loss 0.000173
+Total Steps: 531, MSE loss 0.000172
+Total Steps: 532, MSE loss 0.000172
+Total Steps: 533, MSE loss 0.000171
+Total Steps: 534, MSE loss 0.000171
+Total Steps: 535, MSE loss 0.000170
+Total Steps: 536, MSE loss 0.000169
+Total Steps: 537, MSE loss 0.000169
+Total Steps: 538, MSE loss 0.000168
+Total Steps: 539, MSE loss 0.000168
+Total Steps: 540, MSE loss 0.000167
+Total Steps: 541, MSE loss 0.000166
+Total Steps: 542, MSE loss 0.000166
+Total Steps: 543, MSE loss 0.000165
+Total Steps: 544, MSE loss 0.000165
+Total Steps: 545, MSE loss 0.000164
+Total Steps: 546, MSE loss 0.000163
+Total Steps: 547, MSE loss 0.000163
+Total Steps: 548, MSE loss 0.000162
+Total Steps: 549, MSE loss 0.000162
+Training:  55%|█████▌    | 550/1000 [00:04<00:01, 248.21it/s]Total Steps: 550, MSE loss 0.000161
+Total Steps: 551, MSE loss 0.000161
+Total Steps: 552, MSE loss 0.000160
+Total Steps: 553, MSE loss 0.000159
+Total Steps: 554, MSE loss 0.000159
+Total Steps: 555, MSE loss 0.000158
+Total Steps: 556, MSE loss 0.000158
+Total Steps: 557, MSE loss 0.000157
+Total Steps: 558, MSE loss 0.000157
+Total Steps: 559, MSE loss 0.000156
+Total Steps: 560, MSE loss 0.000156
+Total Steps: 561, MSE loss 0.000155
+Total Steps: 562, MSE loss 0.000155
+Total Steps: 563, MSE loss 0.000154
+Total Steps: 564, MSE loss 0.000154
+Total Steps: 565, MSE loss 0.000153
+Total Steps: 566, MSE loss 0.000153
+Total Steps: 567, MSE loss 0.000152
+Total Steps: 568, MSE loss 0.000152
+Total Steps: 569, MSE loss 0.000151
+Total Steps: 570, MSE loss 0.000151
+Total Steps: 571, MSE loss 0.000150
+Total Steps: 572, MSE loss 0.000150
+Total Steps: 573, MSE loss 0.000149
+Total Steps: 574, MSE loss 0.000149
+Training:  57%|█████▊    | 575/1000 [00:04<00:01, 248.21it/s]Total Steps: 575, MSE loss 0.000148
+Total Steps: 576, MSE loss 0.000148
+Total Steps: 577, MSE loss 0.000147
+Total Steps: 578, MSE loss 0.000147
+Total Steps: 579, MSE loss 0.000146
+Total Steps: 580, MSE loss 0.000146
+Total Steps: 581, MSE loss 0.000145
+Total Steps: 582, MSE loss 0.000145
+Total Steps: 583, MSE loss 0.000144
+Total Steps: 584, MSE loss 0.000144
+Total Steps: 585, MSE loss 0.000143
+Total Steps: 586, MSE loss 0.000143
+Total Steps: 587, MSE loss 0.000142
+Total Steps: 588, MSE loss 0.000142
+Total Steps: 589, MSE loss 0.000142
+Total Steps: 590, MSE loss 0.000141
+Total Steps: 591, MSE loss 0.000141
+Total Steps: 592, MSE loss 0.000140
+Total Steps: 593, MSE loss 0.000140
+Total Steps: 594, MSE loss 0.000139
+Total Steps: 595, MSE loss 0.000139
+Total Steps: 596, MSE loss 0.000138
+Total Steps: 597, MSE loss 0.000138
+Total Steps: 598, MSE loss 0.000138
+Total Steps: 599, MSE loss 0.000137
+Training:  60%|██████    | 600/1000 [00:04<00:01, 248.47it/s]Total Steps: 600, MSE loss 0.000137
+Total Steps: 601, MSE loss 0.000136
+Total Steps: 602, MSE loss 0.000136
+Total Steps: 603, MSE loss 0.000135
+Total Steps: 604, MSE loss 0.000135
+Total Steps: 605, MSE loss 0.000135
+Total Steps: 606, MSE loss 0.000134
+Total Steps: 607, MSE loss 0.000134
+Total Steps: 608, MSE loss 0.000133
+Total Steps: 609, MSE loss 0.000133
+Total Steps: 610, MSE loss 0.000133
+Total Steps: 611, MSE loss 0.000132
+Total Steps: 612, MSE loss 0.000132
+Total Steps: 613, MSE loss 0.000131
+Total Steps: 614, MSE loss 0.000131
+Total Steps: 615, MSE loss 0.000131
+Total Steps: 616, MSE loss 0.000130
+Total Steps: 617, MSE loss 0.000130
+Total Steps: 618, MSE loss 0.000129
+Total Steps: 619, MSE loss 0.000129
+Total Steps: 620, MSE loss 0.000129
+Total Steps: 621, MSE loss 0.000128
+Total Steps: 622, MSE loss 0.000128
+Total Steps: 623, MSE loss 0.000127
+Total Steps: 624, MSE loss 0.000127
+Training:  62%|██████▎   | 625/1000 [00:04<00:01, 248.67it/s]Total Steps: 625, MSE loss 0.000127
+Total Steps: 626, MSE loss 0.000126
+Total Steps: 627, MSE loss 0.000126
+Total Steps: 628, MSE loss 0.000125
+Total Steps: 629, MSE loss 0.000125
+Total Steps: 630, MSE loss 0.000125
+Total Steps: 631, MSE loss 0.000124
+Total Steps: 632, MSE loss 0.000124
+Total Steps: 633, MSE loss 0.000124
+Total Steps: 634, MSE loss 0.000123
+Total Steps: 635, MSE loss 0.000123
+Total Steps: 636, MSE loss 0.000122
+Total Steps: 637, MSE loss 0.000122
+Total Steps: 638, MSE loss 0.000122
+Total Steps: 639, MSE loss 0.000121
+Total Steps: 640, MSE loss 0.000121
+Total Steps: 641, MSE loss 0.000121
+Total Steps: 642, MSE loss 0.000120
+Total Steps: 643, MSE loss 0.000120
+Total Steps: 644, MSE loss 0.000120
+Total Steps: 645, MSE loss 0.000119
+Total Steps: 646, MSE loss 0.000119
+Total Steps: 647, MSE loss 0.000118
+Total Steps: 648, MSE loss 0.000118
+Total Steps: 649, MSE loss 0.000118
+Training:  65%|██████▌   | 650/1000 [00:04<00:01, 248.67it/s]Total Steps: 650, MSE loss 0.000117
+Total Steps: 651, MSE loss 0.000117
+Total Steps: 652, MSE loss 0.000117
+Total Steps: 653, MSE loss 0.000116
+Total Steps: 654, MSE loss 0.000116
+Total Steps: 655, MSE loss 0.000116
+Total Steps: 656, MSE loss 0.000115
+Total Steps: 657, MSE loss 0.000115
+Total Steps: 658, MSE loss 0.000115
+Total Steps: 659, MSE loss 0.000114
+Total Steps: 660, MSE loss 0.000114
+Total Steps: 661, MSE loss 0.000114
+Total Steps: 662, MSE loss 0.000113
+Total Steps: 663, MSE loss 0.000113
+Total Steps: 664, MSE loss 0.000113
+Total Steps: 665, MSE loss 0.000112
+Total Steps: 666, MSE loss 0.000112
+Total Steps: 667, MSE loss 0.000112
+Total Steps: 668, MSE loss 0.000111
+Total Steps: 669, MSE loss 0.000111
+Total Steps: 670, MSE loss 0.000111
+Total Steps: 671, MSE loss 0.000110
+Total Steps: 672, MSE loss 0.000110
+Total Steps: 673, MSE loss 0.000110
+Total Steps: 674, MSE loss 0.000109
+Training:  68%|██████▊   | 675/1000 [00:04<00:01, 248.74it/s]Total Steps: 675, MSE loss 0.000109
+Total Steps: 676, MSE loss 0.000109
+Total Steps: 677, MSE loss 0.000108
+Total Steps: 678, MSE loss 0.000108
+Total Steps: 679, MSE loss 0.000108
+Total Steps: 680, MSE loss 0.000107
+Total Steps: 681, MSE loss 0.000107
+Total Steps: 682, MSE loss 0.000107
+Total Steps: 683, MSE loss 0.000106
+Total Steps: 684, MSE loss 0.000106
+Total Steps: 685, MSE loss 0.000106
+Total Steps: 686, MSE loss 0.000106
+Total Steps: 687, MSE loss 0.000105
+Total Steps: 688, MSE loss 0.000105
+Total Steps: 689, MSE loss 0.000105
+Total Steps: 690, MSE loss 0.000104
+Total Steps: 691, MSE loss 0.000104
+Total Steps: 692, MSE loss 0.000104
+Total Steps: 693, MSE loss 0.000103
+Total Steps: 694, MSE loss 0.000103
+Total Steps: 695, MSE loss 0.000103
+Total Steps: 696, MSE loss 0.000103
+Total Steps: 697, MSE loss 0.000102
+Total Steps: 698, MSE loss 0.000102
+Total Steps: 699, MSE loss 0.000102
+Training:  70%|███████   | 700/1000 [00:04<00:01, 248.74it/s]Total Steps: 700, MSE loss 0.000101
+Total Steps: 701, MSE loss 0.000101
+Total Steps: 702, MSE loss 0.000101
+Total Steps: 703, MSE loss 0.000100
+Total Steps: 704, MSE loss 0.000100
+Total Steps: 705, MSE loss 0.000100
+Total Steps: 706, MSE loss 0.000100
+Total Steps: 707, MSE loss 0.000099
+Total Steps: 708, MSE loss 0.000099
+Total Steps: 709, MSE loss 0.000099
+Total Steps: 710, MSE loss 0.000098
+Total Steps: 711, MSE loss 0.000098
+Total Steps: 712, MSE loss 0.000098
+Total Steps: 713, MSE loss 0.000098
+Total Steps: 714, MSE loss 0.000097
+Total Steps: 715, MSE loss 0.000097
+Total Steps: 716, MSE loss 0.000097
+Total Steps: 717, MSE loss 0.000096
+Total Steps: 718, MSE loss 0.000096
+Total Steps: 719, MSE loss 0.000096
+Total Steps: 720, MSE loss 0.000096
+Total Steps: 721, MSE loss 0.000095
+Total Steps: 722, MSE loss 0.000095
+Total Steps: 723, MSE loss 0.000095
+Total Steps: 724, MSE loss 0.000094
+Training:  72%|███████▎  | 725/1000 [00:05<00:01, 248.82it/s]Total Steps: 725, MSE loss 0.000094
+Total Steps: 726, MSE loss 0.000094
+Total Steps: 727, MSE loss 0.000094
+Total Steps: 728, MSE loss 0.000093
+Total Steps: 729, MSE loss 0.000093
+Total Steps: 730, MSE loss 0.000093
+Total Steps: 731, MSE loss 0.000093
+Total Steps: 732, MSE loss 0.000092
+Total Steps: 733, MSE loss 0.000092
+Total Steps: 734, MSE loss 0.000092
+Total Steps: 735, MSE loss 0.000091
+Total Steps: 736, MSE loss 0.000091
+Total Steps: 737, MSE loss 0.000091
+Total Steps: 738, MSE loss 0.000091
+Total Steps: 739, MSE loss 0.000090
+Total Steps: 740, MSE loss 0.000090
+Total Steps: 741, MSE loss 0.000090
+Total Steps: 742, MSE loss 0.000090
+Total Steps: 743, MSE loss 0.000089
+Total Steps: 744, MSE loss 0.000089
+Total Steps: 745, MSE loss 0.000089
+Total Steps: 746, MSE loss 0.000089
+Total Steps: 747, MSE loss 0.000088
+Total Steps: 748, MSE loss 0.000088
+Total Steps: 749, MSE loss 0.000088
+Training:  75%|███████▌  | 750/1000 [00:05<00:01, 248.90it/s]Total Steps: 750, MSE loss 0.000088
+Total Steps: 751, MSE loss 0.000087
+Total Steps: 752, MSE loss 0.000087
+Total Steps: 753, MSE loss 0.000087
+Total Steps: 754, MSE loss 0.000087
+Total Steps: 755, MSE loss 0.000086
+Total Steps: 756, MSE loss 0.000086
+Total Steps: 757, MSE loss 0.000086
+Total Steps: 758, MSE loss 0.000086
+Total Steps: 759, MSE loss 0.000085
+Total Steps: 760, MSE loss 0.000085
+Total Steps: 761, MSE loss 0.000085
+Total Steps: 762, MSE loss 0.000085
+Total Steps: 763, MSE loss 0.000084
+Total Steps: 764, MSE loss 0.000084
+Total Steps: 765, MSE loss 0.000084
+Total Steps: 766, MSE loss 0.000084
+Total Steps: 767, MSE loss 0.000083
+Total Steps: 768, MSE loss 0.000083
+Total Steps: 769, MSE loss 0.000083
+Total Steps: 770, MSE loss 0.000083
+Total Steps: 771, MSE loss 0.000082
+Total Steps: 772, MSE loss 0.000082
+Total Steps: 773, MSE loss 0.000082
+Total Steps: 774, MSE loss 0.000082
+Training:  78%|███████▊  | 775/1000 [00:05<00:00, 248.72it/s]Total Steps: 775, MSE loss 0.000081
+Total Steps: 776, MSE loss 0.000081
+Total Steps: 777, MSE loss 0.000081
+Total Steps: 778, MSE loss 0.000081
+Total Steps: 779, MSE loss 0.000081
+Total Steps: 780, MSE loss 0.000080
+Total Steps: 781, MSE loss 0.000080
+Total Steps: 782, MSE loss 0.000080
+Total Steps: 783, MSE loss 0.000080
+Total Steps: 784, MSE loss 0.000079
+Total Steps: 785, MSE loss 0.000079
+Total Steps: 786, MSE loss 0.000079
+Total Steps: 787, MSE loss 0.000079
+Total Steps: 788, MSE loss 0.000078
+Total Steps: 789, MSE loss 0.000078
+Total Steps: 790, MSE loss 0.000078
+Total Steps: 791, MSE loss 0.000078
+Total Steps: 792, MSE loss 0.000078
+Total Steps: 793, MSE loss 0.000077
+Total Steps: 794, MSE loss 0.000077
+Total Steps: 795, MSE loss 0.000077
+Total Steps: 796, MSE loss 0.000077
+Total Steps: 797, MSE loss 0.000076
+Total Steps: 798, MSE loss 0.000076
+Total Steps: 799, MSE loss 0.000076
+Training:  80%|████████  | 800/1000 [00:05<00:00, 248.93it/s]Total Steps: 800, MSE loss 0.000076
+Total Steps: 801, MSE loss 0.000076
+Total Steps: 802, MSE loss 0.000075
+Total Steps: 803, MSE loss 0.000075
+Total Steps: 804, MSE loss 0.000075
+Total Steps: 805, MSE loss 0.000075
+Total Steps: 806, MSE loss 0.000075
+Total Steps: 807, MSE loss 0.000074
+Total Steps: 808, MSE loss 0.000074
+Total Steps: 809, MSE loss 0.000074
+Total Steps: 810, MSE loss 0.000074
+Total Steps: 811, MSE loss 0.000073
+Total Steps: 812, MSE loss 0.000073
+Total Steps: 813, MSE loss 0.000073
+Total Steps: 814, MSE loss 0.000073
+Total Steps: 815, MSE loss 0.000073
+Total Steps: 816, MSE loss 0.000072
+Total Steps: 817, MSE loss 0.000072
+Total Steps: 818, MSE loss 0.000072
+Total Steps: 819, MSE loss 0.000072
+Total Steps: 820, MSE loss 0.000072
+Total Steps: 821, MSE loss 0.000071
+Total Steps: 822, MSE loss 0.000071
+Total Steps: 823, MSE loss 0.000071
+Total Steps: 824, MSE loss 0.000071
+Training:  82%|████████▎ | 825/1000 [00:05<00:00, 248.98it/s]Total Steps: 825, MSE loss 0.000071
+Total Steps: 826, MSE loss 0.000070
+Total Steps: 827, MSE loss 0.000070
+Total Steps: 828, MSE loss 0.000070
+Total Steps: 829, MSE loss 0.000070
+Total Steps: 830, MSE loss 0.000070
+Total Steps: 831, MSE loss 0.000069
+Total Steps: 832, MSE loss 0.000069
+Total Steps: 833, MSE loss 0.000069
+Total Steps: 834, MSE loss 0.000069
+Total Steps: 835, MSE loss 0.000069
+Total Steps: 836, MSE loss 0.000068
+Total Steps: 837, MSE loss 0.000068
+Total Steps: 838, MSE loss 0.000068
+Total Steps: 839, MSE loss 0.000068
+Total Steps: 840, MSE loss 0.000068
+Total Steps: 841, MSE loss 0.000067
+Total Steps: 842, MSE loss 0.000067
+Total Steps: 843, MSE loss 0.000067
+Total Steps: 844, MSE loss 0.000067
+Total Steps: 845, MSE loss 0.000067
+Total Steps: 846, MSE loss 0.000066
+Total Steps: 847, MSE loss 0.000066
+Total Steps: 848, MSE loss 0.000066
+Total Steps: 849, MSE loss 0.000066
+Training:  85%|████████▌ | 850/1000 [00:05<00:00, 248.94it/s]Total Steps: 850, MSE loss 0.000066
+Total Steps: 851, MSE loss 0.000066
+Total Steps: 852, MSE loss 0.000065
+Total Steps: 853, MSE loss 0.000065
+Total Steps: 854, MSE loss 0.000065
+Total Steps: 855, MSE loss 0.000065
+Total Steps: 856, MSE loss 0.000065
+Total Steps: 857, MSE loss 0.000064
+Total Steps: 858, MSE loss 0.000064
+Total Steps: 859, MSE loss 0.000064
+Total Steps: 860, MSE loss 0.000064
+Total Steps: 861, MSE loss 0.000064
+Total Steps: 862, MSE loss 0.000064
+Total Steps: 863, MSE loss 0.000063
+Total Steps: 864, MSE loss 0.000063
+Total Steps: 865, MSE loss 0.000063
+Total Steps: 866, MSE loss 0.000063
+Total Steps: 867, MSE loss 0.000063
+Total Steps: 868, MSE loss 0.000062
+Total Steps: 869, MSE loss 0.000062
+Total Steps: 870, MSE loss 0.000062
+Total Steps: 871, MSE loss 0.000062
+Total Steps: 872, MSE loss 0.000062
+Total Steps: 873, MSE loss 0.000062
+Total Steps: 874, MSE loss 0.000061
+Training:  88%|████████▊ | 875/1000 [00:05<00:00, 248.98it/s]Total Steps: 875, MSE loss 0.000061
+Total Steps: 876, MSE loss 0.000061
+Total Steps: 877, MSE loss 0.000061
+Total Steps: 878, MSE loss 0.000061
+Total Steps: 879, MSE loss 0.000061
+Total Steps: 880, MSE loss 0.000061
+Total Steps: 881, MSE loss 0.000061
+Total Steps: 882, MSE loss 0.000061
+Total Steps: 883, MSE loss 0.000062
+Total Steps: 884, MSE loss 0.000063
+Total Steps: 885, MSE loss 0.000065
+Total Steps: 886, MSE loss 0.000070
+Total Steps: 887, MSE loss 0.000080
+Total Steps: 888, MSE loss 0.000099
+Total Steps: 889, MSE loss 0.000138
+Total Steps: 890, MSE loss 0.000216
+Total Steps: 891, MSE loss 0.000371
+Total Steps: 892, MSE loss 0.000687
+Total Steps: 893, MSE loss 0.001312
+Total Steps: 894, MSE loss 0.002573
+Total Steps: 895, MSE loss 0.004924
+Total Steps: 896, MSE loss 0.009305
+Total Steps: 897, MSE loss 0.015749
+Total Steps: 898, MSE loss 0.024444
+Total Steps: 899, MSE loss 0.028554
+Training:  90%|█████████ | 900/1000 [00:05<00:00, 249.00it/s]Total Steps: 900, MSE loss 0.025865
+Total Steps: 901, MSE loss 0.012564
+Total Steps: 902, MSE loss 0.001678
+Total Steps: 903, MSE loss 0.001484
+Total Steps: 904, MSE loss 0.009067
+Total Steps: 905, MSE loss 0.014129
+Total Steps: 906, MSE loss 0.009483
+Total Steps: 907, MSE loss 0.002070
+Total Steps: 908, MSE loss 0.000479
+Total Steps: 909, MSE loss 0.004955
+Total Steps: 910, MSE loss 0.007870
+Total Steps: 911, MSE loss 0.004622
+Total Steps: 912, MSE loss 0.000541
+Total Steps: 913, MSE loss 0.000923
+Total Steps: 914, MSE loss 0.003930
+Total Steps: 915, MSE loss 0.004471
+Total Steps: 916, MSE loss 0.001740
+Total Steps: 917, MSE loss 0.000073
+Total Steps: 918, MSE loss 0.001363
+Total Steps: 919, MSE loss 0.002848
+Total Steps: 920, MSE loss 0.002094
+Total Steps: 921, MSE loss 0.000378
+Total Steps: 922, MSE loss 0.000290
+Total Steps: 923, MSE loss 0.001477
+Total Steps: 924, MSE loss 0.001744
+Training:  92%|█████████▎| 925/1000 [00:05<00:00, 249.15it/s]Total Steps: 925, MSE loss 0.000751
+Total Steps: 926, MSE loss 0.000068
+Total Steps: 927, MSE loss 0.000551
+Total Steps: 928, MSE loss 0.001162
+Total Steps: 929, MSE loss 0.000861
+Total Steps: 930, MSE loss 0.000197
+Total Steps: 931, MSE loss 0.000144
+Total Steps: 932, MSE loss 0.000598
+Total Steps: 933, MSE loss 0.000736
+Total Steps: 934, MSE loss 0.000353
+Total Steps: 935, MSE loss 0.000067
+Total Steps: 936, MSE loss 0.000232
+Total Steps: 937, MSE loss 0.000481
+Total Steps: 938, MSE loss 0.000403
+Total Steps: 939, MSE loss 0.000138
+Total Steps: 940, MSE loss 0.000078
+Total Steps: 941, MSE loss 0.000244
+Total Steps: 942, MSE loss 0.000331
+Total Steps: 943, MSE loss 0.000210
+Total Steps: 944, MSE loss 0.000072
+Total Steps: 945, MSE loss 0.000099
+Total Steps: 946, MSE loss 0.000207
+Total Steps: 947, MSE loss 0.000215
+Total Steps: 948, MSE loss 0.000120
+Total Steps: 949, MSE loss 0.000061
+Training:  95%|█████████▌| 950/1000 [00:05<00:00, 249.10it/s]Total Steps: 950, MSE loss 0.000103
+Total Steps: 951, MSE loss 0.000160
+Total Steps: 952, MSE loss 0.000144
+Total Steps: 953, MSE loss 0.000083
+Total Steps: 954, MSE loss 0.000061
+Total Steps: 955, MSE loss 0.000094
+Total Steps: 956, MSE loss 0.000123
+Total Steps: 957, MSE loss 0.000105
+Total Steps: 958, MSE loss 0.000068
+Total Steps: 959, MSE loss 0.000060
+Total Steps: 960, MSE loss 0.000082
+Total Steps: 961, MSE loss 0.000097
+Total Steps: 962, MSE loss 0.000085
+Total Steps: 963, MSE loss 0.000063
+Total Steps: 964, MSE loss 0.000059
+Total Steps: 965, MSE loss 0.000072
+Total Steps: 966, MSE loss 0.000081
+Total Steps: 967, MSE loss 0.000074
+Total Steps: 968, MSE loss 0.000061
+Total Steps: 969, MSE loss 0.000057
+Total Steps: 970, MSE loss 0.000064
+Total Steps: 971, MSE loss 0.000070
+Total Steps: 972, MSE loss 0.000067
+Total Steps: 973, MSE loss 0.000060
+Total Steps: 974, MSE loss 0.000056
+Training:  98%|█████████▊| 975/1000 [00:06<00:00, 249.24it/s]Total Steps: 975, MSE loss 0.000059
+Total Steps: 976, MSE loss 0.000063
+Total Steps: 977, MSE loss 0.000063
+Total Steps: 978, MSE loss 0.000059
+Total Steps: 979, MSE loss 0.000055
+Total Steps: 980, MSE loss 0.000056
+Total Steps: 981, MSE loss 0.000058
+Total Steps: 982, MSE loss 0.000059
+Total Steps: 983, MSE loss 0.000058
+Total Steps: 984, MSE loss 0.000055
+Total Steps: 985, MSE loss 0.000054
+Total Steps: 986, MSE loss 0.000055
+Total Steps: 987, MSE loss 0.000056
+Total Steps: 988, MSE loss 0.000056
+Total Steps: 989, MSE loss 0.000055
+Total Steps: 990, MSE loss 0.000054
+Total Steps: 991, MSE loss 0.000053
+Total Steps: 992, MSE loss 0.000054
+Total Steps: 993, MSE loss 0.000055
+Total Steps: 994, MSE loss 0.000054
+Total Steps: 995, MSE loss 0.000053
+Total Steps: 996, MSE loss 0.000053
+Total Steps: 997, MSE loss 0.000053
+Total Steps: 998, MSE loss 0.000053
+Total Steps: 999, MSE loss 0.000053
+Training: 100%|██████████| 1000/1000 [00:06<00:00, 249.12it/s]Training: 100%|██████████| 1000/1000 [00:06<00:00, 162.54it/s]
+Overall runtime: 6.2464758940041065
+Grad network allclose: False
+Integral network allclose: False
