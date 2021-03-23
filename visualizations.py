@@ -43,7 +43,7 @@ def loss_vis(compliance_loss_array, title, save=True, path=None):
         plt.title('Training Loss')
         plt.xlabel('Iteration')
         plt.ylabel('MSE loss')
-        plt.ylim(0, 100)
+        plt.ylim(0, 0.95 * np.max(compliance_loss_array))
         plt.suptitle(title, fontsize=18)
         plt.savefig(path + title_ + '.png')
         plt.close()
