@@ -26,10 +26,11 @@ class SineLayer(nn.Module):
     # activations constant, but boost gradients to the weight matrix (see supplement Sec. 1.5)
 
     def __init__(self, in_features, out_features, bias=True,
-                 is_first=False, omega_0=30.):
+                 is_first=False, omega_0=30., normalized=True):
         super().__init__()
         self.omega_0 = omega_0
         self.is_first = is_first
+        self.normalized = normalized
 
         self.in_features = in_features
         self.linear = nn.Linear(in_features, out_features, bias=bias)
@@ -46,7 +47,10 @@ class SineLayer(nn.Module):
                                             np.sqrt(6 / self.in_features) / self.omega_0)
 
     def forward(self, input):
-        return torch.sin(self.omega_0 * self.linear(input))
+        if self.normalized:
+            return torch.sin(self.omega_0 * self.linear(input)) / self.omega_0
+        else:
+            return torch.sin(self.omega_0 * self.linear(input))
 
     def forward_with_intermediate(self, input):
         # For visualization of activation distributions
@@ -56,15 +60,15 @@ class SineLayer(nn.Module):
 
 class Siren(nn.Module):
     def __init__(self, in_features, hidden_features, hidden_layers, out_features, outermost_linear=False,
-                 first_omega_0=30., hidden_omega_0=30.):
+                 normalized=True, first_omega_0=30., hidden_omega_0=30.):
         super().__init__()
 
         self.net = []
-        self.net.append(SineLayer(in_features, hidden_features,
+        self.net.append(SineLayer(in_features, hidden_features, normalized=normalized,
                                   is_first=True, omega_0=first_omega_0))
 
         for i in range(hidden_layers):
-            self.net.append(SineLayer(hidden_features, hidden_features,
+            self.net.append(SineLayer(hidden_features, hidden_features, normalized=normalized,
                                       is_first=False, omega_0=hidden_omega_0))
 
         if outermost_linear:
