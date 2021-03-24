@@ -48,7 +48,7 @@ problem_path = 'Advanced1D'  # TODO
 grid_dimensions = [100, 1]  # TODO
 
 # hyper parameter of positional encoding in NeRF
-epoch_sizes = 3000  # TODO
+epoch_sizes = 15000  # TODO
 mrconfprint = 'grid Dimension: {}\n'.format(grid_dimensions)
 sys.stderr.write(mrconfprint)
 
@@ -64,16 +64,16 @@ embedding_size = 512  # TODO
 if scale == 0.0:
     embedding_size = 0
 ## siren
-first_omega_0 = 0.05
-hidden_omega_0 = 0.05
+first_omega_0 = 0.9
+hidden_omega_0 = 0.9
 
-domain = np.array([[-10., 10.],[0., 1.]])
-mlp_model = networks.MLP(in_features=1, out_features=1, n_neurons=1024, n_layers=10, scale=scale,
-                        embedding_size=embedding_size, hidden_act=nn.SiLU(), output_act=None)
-# siren_model = networks.Siren(in_features=1, out_features=1, hidden_features=1024, hidden_layers=10, normalized=False,
-                            #  outermost_linear=True, first_omega_0=first_omega_0, hidden_omega_0=hidden_omega_0)
-model = mlp_model
-siren = True
+domain = np.array([[-3., 1.],[0., 1.]])
+# mlp_model = networks.MLP(in_features=1, out_features=1, n_neurons=1024, n_layers=10, scale=scale,
+#                         embedding_size=embedding_size, hidden_act=nn.SiLU(), output_act=None)
+siren_model = networks.Siren(in_features=1, out_features=1, hidden_features=1024, hidden_layers=10, normalized=True,
+                             outermost_linear=True, first_omega_0=first_omega_0, hidden_omega_0=hidden_omega_0)
+model = siren_model
+siren = True if 'Siren' in str(model.__class__) else False
 if torch.cuda.is_available():
     model.cuda()
 sys.stderr.write('Deep learning model config: {}\n'.format(model))
@@ -99,12 +99,13 @@ x = next(iter(dataloader))[..., 0]
 def f(x):
     # return 1. / (x**2 - x + 1 + 1e-5)  # problematic
     # return 1. / (torch.sqrt(x) * (x + 1.))  # problematic
-    return 
+    return (x ** 5) * torch.sqrt(2 - x**3) 
 def g(x):
     # return (3. * np.sqrt(3.) / 8.) * torch.atan(2. * (x - 0.5) / np.sqrt(3.))  # problematic
     # return 2. * torch.atan(torch.sqrt(x))  # problematic
-sys.stderr.write('Target grad function: {}, target integral function: {}\n'.format('1. / (sqrt(x) * (x + 1.))',
-                 '2 * atan(sqrt(x))'))
+    return -2. * (2 - x**3)**(2/3) * (x**3 + 2./3.) / 9.
+sys.stderr.write('Target grad function: {}, target integral function: {}\n'.format('(x ** 5) * sqrt(2 - x**3)',
+                 '-2. (2 - x**3)**(2/3) * (x**3 + 2./3.) / 9.'))
 if torch.cuda.is_available():
     x = x.cuda().requires_grad_(True)
 
