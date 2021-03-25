@@ -1,4 +1,5 @@
 import torch
+from kornia.geometry import transform
 from torch.utils.data import Dataset
 
 import numpy as np
@@ -104,135 +105,29 @@ class SupervisedMeshGrid(Dataset):
         return get_mgrid(self.sidelen, self.domain, self.flatten), -gt_densities
 
 
-class RandomField(Dataset):
-    def __init__(self, latent, std=0.1, mean=0):
-        """
-        Generates a latent vector distributed from random normal
+def radon_transform(tensor, alpha=None, rotate=False):
+    # MAKE SURE `image` is 4D (B, C, H, W)
+    device = tensor.device
+    if len(tensor.shape) != 4:
+        raise ValueError('Please use a 4D tensor (B, C, H, W), your input shape is {}'.format(tensor.shape))
+    center = tensor.shape[-2] // 2
 
-        :param latent: Latent vector size based on number of elements
-        :param std: std of gaussian noise
-        :param mean: mean of gaussian noise
-        :return: A random tensor with size of latent
-        """
-        super().__init__()
-        self.latent = latent
-        self.std = std
-        self.mean = mean
+    R_batch = torch.zeros((len(alpha), 3, 3), device=device)
+    for i, angle in enumerate(torch.deg2rad(alpha)):
+        cos_a, sin_a = torch.cos(angle), torch.sin(angle)
+        R = torch.tensor([[cos_a, sin_a, -center * (cos_a + sin_a - 1)],
+                         [-sin_a, cos_a, -center * (cos_a - sin_a - 1)],
+                         [0., 0., 1.]], device=device).unsqueeze(0)
+        R_batch[i] = R
+    rotated = transform.warp_perspective(tensor.repeat((len(alpha), 1, 1, 1)), R_batch, dsize=(tensor.shape[-2], len(alpha)),
+                                         mode='nearest', align_corners=True)
 
-    def __len__(self):
-        return 1
-
-    def __getitem__(self, idx):
-        if idx > 0:
-            raise IndexError
-
-        # latent size with one feature for each element in latent space
-        return torch.randn(self.latent, 1) * self.std + self.mean
-
-
-class NormalLatent(Dataset):
-    def __init__(self, latent_size, std=1, mean=0):
-        """
-        Generates a latent vector distributed from random normal
-
-        :param latent: Latent vector size based
-        :param std: std of gaussian noise
-        :param mean: mean of gaussian noise
-        :return: A random tensor with size of latent
-        """
-        super().__init__()
-        self.latent_size = latent_size
-        self.std = std
-        self.mean = mean
-
-    def __len__(self):
-        return 1
-
-    def __getitem__(self, idx):
-        if idx > 0:
-            raise IndexError
-
-        return torch.normal(mean=self.mean, std=self.std, size=(self.latent_size, ))
-
-
-# Reference: https://github.com/jacobkimmel/pytorch_modelsize
-class SizeEstimator(object):
-
-    def __init__(self, model, input_size=(1,1,32,32), bits=32):
-        '''
-        Estimates the size of PyTorch models in memory
-        for a given input size
-        '''
-        self.model = model
-        self.input_size = input_size
-        self.bits = bits
-        return
-
-    def get_parameter_sizes(self):
-        '''Get sizes of all parameters in `model`'''
-        mods = list(self.model.modules())
-        sizes = []
-        
-        for i in range(1,len(mods)):
-            m = mods[i]
-            p = list(m.parameters())
-            for j in range(len(p)):
-                sizes.append(np.array(p[j].size()))
-
-        self.param_sizes = sizes
-        return
-
-    def get_output_sizes(self):
-        '''Run sample input through each layer to get output sizes'''
-        input_ = torch.FloatTensor(*self.input_size).requires_grad_(True)
-        mods = list(self.model.modules())
-        out_sizes = []
-        for i in range(1, len(mods)):
-            m = mods[i]
-            out = m(input_)
-            out_sizes.append(np.array(out.size()))
-            input_ = out
-
-        self.out_sizes = out_sizes
-        return
-
-    def calc_param_bits(self):
-        '''Calculate total number of bits to store `model` parameters'''
-        total_bits = 0
-        for i in range(len(self.param_sizes)):
-            s = self.param_sizes[i]
-            bits = np.prod(np.array(s))*self.bits
-            total_bits += bits
-        self.param_bits = total_bits
-        return
-
-    def calc_forward_backward_bits(self):
-        '''Calculate bits to store forward and backward pass'''
-        total_bits = 0
-        for i in range(len(self.out_sizes)):
-            s = self.out_sizes[i]
-            bits = np.prod(np.array(s))*self.bits
-            total_bits += bits
-        # multiply by 2 for both forward AND backward
-        self.forward_backward_bits = (total_bits*2)
-        return
-
-    def calc_input_bits(self):
-        '''Calculate bits to store input'''
-        self.input_bits = np.prod(np.array(self.input_size))*self.bits
-        return
-
-    def estimate_size(self):
-        '''Estimate model size in memory in megabytes and bits'''
-        self.get_parameter_sizes()
-        self.get_output_sizes()
-        self.calc_param_bits()
-        self.calc_forward_backward_bits()
-        self.calc_input_bits()
-        total = self.param_bits + self.forward_backward_bits + self.input_bits
-
-        total_megabytes = (total/8)/(1024**2)
-        return total_megabytes, total
+    if rotate:
+        # for visualization part, use ``torch.rot90(radon_image_ef)``
+        radon_image_ef = torch.rot90(rotated.sum(-2).squeeze(1))
+    else:
+        radon_image_ef = rotated.sum(-2).squeeze(1)
+    return radon_image_ef
 
 
 def count_parameters(model, trainable=True):
@@ -286,24 +181,3 @@ def save_densities(density, gridDimensions, title, save=False, prediciton=True, 
             with open(path + title + '_gt.npy', 'wb') as f:
                 np.save(f, -density.reshape(gridDimensions[0], gridDimensions[1]).T)
 
-
-def compute_binary_compliance_loss(density, loss_engine, top):
-    voxelfem_engine = loss_engine
-    if voxelfem_engine is None:
-        density_binary = (density > 0.5) * 1.
-        top.setVars(density_binary.astype(np.float64))
-        binary_compliance_loss = top.evaluateObjective()
-        sys.stderr.write('Compliance loss of binary densities for "{}": {}, b-vol={:.3f}\n'.format(density_binary.shape,
-                                                                                                   binary_compliance_loss,
-                                                                                                   density_binary.mean()))        
-        top.setVars(density)
-    else:
-        density_binary = (density > 0.5).float() * 1.
-        if torch.cuda.is_available():
-            density_binary = density_binary.cpu()
-        binary_compliance_loss = voxelfem_engine(density_binary.flatten(), top)
-        sys.stderr.write('Compliance loss of binary densities for "{}": {}, b-vol={:.3f}\n'.format(density_binary.shape,
-                                                                                                   binary_compliance_loss.detach().numpy(),
-                                                                                                   density_binary.mean().numpy()))
-    
-    return binary_compliance_loss

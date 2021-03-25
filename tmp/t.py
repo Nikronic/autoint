@@ -1,5 +1,7 @@
 import os, sys
 import torch
+import kornia
+from kornia.geometry import transform
 import torch.nn as nn
 from torch.utils.data import DataLoader
 
@@ -10,28 +12,25 @@ import multires_utils
 import visualizations
 
 import numpy as np
+import cv2
+from skimage.transform import radon, warp
 
 import matplotlib as mpl
 mpl.use('Agg')
+import matplotlib.pyplot as plt
 
 from tqdm import tqdm
 import time
 import argparse
 import itertools
 
-
 # global variables that control visualizing/saving problem domain, losses, etc.
 visualize = True
 save_model = True
 save_integral_pred = False
 
-problem_path = '1DIntegral'  # TODO
+problem_path = 'CT'  # TODO
 grid_dimensions = [100, 1]  # TODO
-
-# hyper parameter of positional encoding in NeRF
-epoch_sizes = 2000  # TODO
-mrconfprint = 'grid Dimension: {}\n'.format(grid_dimensions)
-sys.stderr.write(mrconfprint)
 
 # reproducibility
 seed = 8
@@ -39,72 +38,41 @@ torch.manual_seed(seed)
 np.random.seed(seed)
 
 # deep learning modules
-domain = np.array([[0., 1.],[0., 1.]])
-mlp_model = nn.Linear(in_features=1, out_features=1, bias=False)  # learning ax=4x
-model = mlp_model
-if torch.cuda.is_available():
-    model.cuda()
-sys.stderr.write('Deep learning model config: {}\n'.format(model))
+domain = np.array([[-1., 1.],[0., 180.]])
 
-learning_rate = 3e-2
-optim = torch.optim.Adam(lr=learning_rate, params=itertools.chain(list(model.parameters())))
-criterion = nn.MSELoss(reduction='mean')
-sys.stderr.write('DL optim: {}\n'.format(optim))
 
-# record runtime
-start_time = time.perf_counter()
+image = torch.as_tensor(cv2.imread('data/phantom.png', 0).astype(np.float32)).unsqueeze(0).unsqueeze(0).requires_grad_(True)
 
-# data
-dataset = utils.MeshGrid(sidelen=grid_dimensions, domain=domain, flatten=False)
-dataloader = DataLoader(dataset, batch_size=1, pin_memory=True, num_workers=0)
-x = next(iter(dataloader))[..., 0]
-# x = torch.tensor([2.])
-def f(x):  # for test case: f(x=2)=4
-    return 4 * torch.ones_like(x)
-def g(x):  # for test case: g(x=2)=8
-    return 4 * x
-if torch.cuda.is_available():
-    x = x.cuda().requires_grad_(True)
+# parameterization
+rho = torch.linspace(domain[0][0], domain[0,1], 100)
+alpha = torch.linspace(domain[1][0], domain[1,1], np.max(image.shape))
+# t = torch.linspace()
 
-# training
-batch_size = 1
-loss_array = []
+# MAKE SURE `image` is 4D (B, C, H, W)
+img_shape = np.array(image.shape[2:])
+shape_min = min(img_shape)
+radius = shape_min // 2
+coords = (torch.arange(0, img_shape[0]).view(-1, 1), torch.arange(0, img_shape[1]).view(1, -1))
+center = image.shape[-2] // 2
 
-# training
-for step in tqdm(range(epoch_sizes), desc='Training: '):
-    model.train()
+#############################################
+R_batch = torch.zeros((len(alpha), 3, 3))
+for i, angle in enumerate(torch.deg2rad(alpha)):
+    cos_a, sin_a = torch.cos(angle), torch.sin(angle)
+    R = torch.tensor([[cos_a, sin_a, -center * (cos_a + sin_a - 1)],
+                    [-sin_a, cos_a, -center * (cos_a - sin_a - 1)],
+                    [0., 0., 1.]]).unsqueeze(0)
+    R_batch[i] = R
+rotated = transform.warp_perspective(image.repeat((len(alpha), 1, 1, 1)), R_batch, dsize=(image.shape[-2], len(alpha)),
+                                        mode='nearest', align_corners=True)
 
-    def closure():
-        optim.zero_grad()
+radon_image_ef = torch.rot90(rotated.sum(-2).squeeze(1))
+#############################################
 
-        integral_pred = model(x)
-        integral_pred = integral_pred.view(grid_dimensions)
-        grad_pred = utils.gradient(integral_pred, x)
-        
-        loss = criterion(grad_pred, f(x))
-        loss.backward()
+radon2 = radon(image.clone().detach().squeeze(0).squeeze(0).numpy(), theta=alpha.numpy())
+radon2 = np.fliplr(radon2)
 
-        # save loss values for plotting
-        loss_array.append(loss.detach().item())
-        sys.stderr.write("Total Steps: %d, MSE loss %0.6f\n" % (step, loss))
+crit = nn.MSELoss(reduction='sum')
+loss = crit(torch.as_tensor(radon2.copy()).float()/radon2.max(), radon_image_ef/radon_image_ef.max())
+print()
 
-        return loss
-
-    optim.step(closure)
-
-# test model
-integral_pred = model(x)
-assert integral_pred == g(x)  # check integral network
-assert utils.gradient(integral_pred, f(x))  # check grad network
-
-# visualization and saving model
-title = 'mlp_'+str(step)
-title = visualizations.loss_vis(loss_array, title, True, path='l.png')
-# visualizations.integral_pred_vis(integral_pred, loss_array[-1], grid_dimensions, title, True, visualize, True,
-#                             binary_loss=None, path='tmp/d.png')
-
-# recording run time
-execution_time = time.perf_counter() - start_time
-sys.stderr.write('Overall runtime: {}\n'.format(execution_time))
-
-# utils.save_densities(integral_pred, grid_dimensions, title, save_integral_pred, True, path='logs/densities/fourfeat_multires/')
