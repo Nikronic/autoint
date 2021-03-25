@@ -42,11 +42,11 @@ visualize = True
 save_model = True
 save_integral_pred = False
 
-problem_path = 'Advanced1D'  # TODO
+problem_path = 'CTSino'  # TODO
 grid_dimensions = [100, 1]  # TODO
 
 # hyper parameter of positional encoding in NeRF
-epoch_sizes = 5000  # TODO
+epoch_sizes = 1000  # TODO
 mrconfprint = 'grid Dimension: {}\n'.format(grid_dimensions)
 sys.stderr.write(mrconfprint)
 
@@ -57,20 +57,20 @@ np.random.seed(seed)
 
 # deep learning modules
 ## fourfeat
-scale = 0.2  # TODO
-embedding_size = 32  # TODO
+scale = 0.0  # TODO
+embedding_size = 512  # TODO
 if scale == 0.0:
     embedding_size = 0
 ## siren
 first_omega_0 = 0.9
 hidden_omega_0 = 0.9
 
-domain = np.array([[-2.5, 2.5],[0., 1.]])
-mlp_model = networks.MLP(in_features=1, out_features=1, n_neurons=8, n_layers=2, scale=scale,
-                        embedding_size=embedding_size, hidden_act=nn.SiLU(), output_act=None)
-# siren_model = networks.Siren(in_features=1, out_features=1, hidden_features=4, hidden_layers=4, normalized=True,
-#                              outermost_linear=True, first_omega_0=first_omega_0, hidden_omega_0=hidden_omega_0)
-model = mlp_model
+domain = np.array([[-1., 1.],[0., 3.1415926]])
+# mlp_model = networks.MLP(in_features=1, out_features=1, n_neurons=1024, n_layers=10, scale=scale,
+#                         embedding_size=embedding_size, hidden_act=nn.SiLU(), output_act=None)
+siren_model = networks.Siren(in_features=3, out_features=1, hidden_features=1024, hidden_layers=10, normalized=True,
+                             outermost_linear=True, first_omega_0=first_omega_0, hidden_omega_0=hidden_omega_0)
+model = siren_model
 siren = True if 'Siren' in str(model.__class__) else False
 if torch.cuda.is_available():
     model.cuda()
@@ -80,7 +80,7 @@ if not siren:
 else:
     sys.stderr.write('Positional Encoding -> first omega zero={}, hidden omega zero={}\n'.format(first_omega_0, hidden_omega_0))
 
-learning_rate = 3e-4
+learning_rate = 1e-5
 optim = torch.optim.Adam(lr=learning_rate, params=itertools.chain(list(model.parameters())))
 criterion = nn.MSELoss(reduction='mean')
 sys.stderr.write('DL optim: {}\n'.format(optim))
@@ -91,19 +91,9 @@ start_time = time.perf_counter()
 # data
 dataset = utils.MeshGrid(sidelen=grid_dimensions, domain=domain, flatten=False)
 dataloader = DataLoader(dataset, batch_size=1, pin_memory=True, num_workers=0)
-x = next(iter(dataloader))[..., 0]
+# x = next(iter(dataloader))
 
-# examples from https://xaktly.com/ToughIntegrals.html
-def f(x):
-    return 1. / (x**2 - x + 1 + 1e-5)  # problematic
-    # return 1. / (torch.sqrt(x) * (x + 1.))  # problematic
-    # return (x ** 5) * torch.sqrt(2 - x**3) 
-def g(x):
-    return (3. * np.sqrt(3.) / 8.) * torch.atan(2. * (x - 0.5) / np.sqrt(3.))  # problematic
-    # return 2. * torch.atan(torch.sqrt(x))  # problematic
-    # return -2. * (2 - x**3)**(2/3) * (x**3 + 2./3.) / 9.
-sys.stderr.write('Target grad function: {}, target integral function: {}\n'.format('1. / (x**2 - x + 1 + 1e-5)',
-                 '(3. * np.sqrt(3.) / 8.) * torch.atan(2. * (x - 0.5) / np.sqrt(3.))'))
+
 if torch.cuda.is_available():
     x = x.cuda().requires_grad_(True)
 

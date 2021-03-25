@@ -1,0 +1,2 @@
+[tmp] base: /HPS/deep_topopt/work/autoint/tmp/
+[misc] expX log: /HPS/deep_topopt/work/autoint/logs/slurm/misc/

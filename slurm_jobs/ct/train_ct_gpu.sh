@@ -1,10 +1,10 @@
 #!/usr/bin/sh
 
 #SBATCH -p gpu20
-#SBATCH -t 1-00:00:00
-#SBATCH -J ImgIntegral
+#SBATCH -t 0-01:00:00
+#SBATCH -J CT
 #SBATCH -D /HPS/deep_topopt/work/autoint
-#SBATCH -o /HPS/deep_topopt/work/autoint/logs/slurm/fourfeat/slurm-%x-%j.log
+#SBATCH -o /HPS/deep_topopt/work/autoint/logs/slurm/ct/slurm-%x-%j.log
 #SBATCH --gres gpu:1
 
 # Make conda available:
@@ -14,4 +14,4 @@ conda activate autoint
 
 
 # call your program here
-python3 /HPS/deep_topopt/work/autoint/training/train_fourfeat.py --jid ${SLURM_JOBID}
+python3 /HPS/deep_topopt/work/autoint/training/train_ct.py --jid ${SLURM_JOBID}

@@ -41,7 +41,10 @@ np.random.seed(seed)
 domain = np.array([[-1., 1.],[0., 180.]])
 
 
-image = torch.as_tensor(cv2.imread('data/phantom.png', 0).astype(np.float32)).unsqueeze(0).unsqueeze(0).requires_grad_(True)
+# image = torch.as_tensor(cv2.imread('data/phantom.png', 0).astype(np.float32)).unsqueeze(0).unsqueeze(0).requires_grad_(True)
+image = torch.as_tensor([[0, 1, 0.5],
+                         [1, 1, 0],
+                         [1, 0.5, 1]]).unsqueeze(0).unsqueeze(0).float()
 
 # parameterization
 rho = torch.linspace(domain[0][0], domain[0,1], 100)
